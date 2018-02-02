@@ -1,12 +1,14 @@
 .gradle
 sandbox/build/
+.idea/workspace.xml
+.idea/misc.xml
+sandbox/out/production/classes/
 
 # Ignore Gradle GUI config
 gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
-.idea/workspace.xml
 
 # Cache of project
 .gradletasknamecache
