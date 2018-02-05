@@ -3,6 +3,7 @@ sandbox/build/
 .idea/workspace.xml
 .idea/misc.xml
 sandbox/out/production/classes/
+sandbox/out/test/classes/
 
 # Ignore Gradle GUI config
 gradle-app.setting
