@@ -5,6 +5,8 @@ sandbox/build/
 sandbox/out/production/classes/
 sandbox/out/test/classes/
 
+addressbook-web-tests/out/production/classes/
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
