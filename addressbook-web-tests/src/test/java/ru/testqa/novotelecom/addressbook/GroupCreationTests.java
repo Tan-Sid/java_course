@@ -21,10 +21,6 @@ public class GroupCreationTests {
     @BeforeMethod
     public void setUp() throws Exception {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("/opt/firefox/firefox"));
-    }
-    
-    @Test
-    public void GroupCreationTests() {
         wd.get("http://localhost/addressbook/group.php");
         wd.findElement(By.cssSelector("html")).click();
         wd.findElement(By.name("user")).click();
@@ -34,6 +30,10 @@ public class GroupCreationTests {
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+    }
+    
+    @Test
+    public void testGroupCreation() {
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.name("new")).click();
         wd.findElement(By.name("group_name")).click();
