@@ -1,13 +1,14 @@
 .gradle
-sandbox/build/
+
 .idea/workspace.xml
 .idea/misc.xml
+
+sandbox/build/
 sandbox/out/production/classes/
 sandbox/out/test/classes/
 
-addressbook-web-tests/build/
-addressbook-web-tests/out/production/classes/
-addressbook-web-tests/out/classes/
+addressbook-web-tests/out/test/classes/
+addressbook-web-tests/out/main/classes/
 
 # Ignore Gradle GUI config
 gradle-app.setting
