@@ -5,6 +5,7 @@ sandbox/build/
 sandbox/out/production/classes/
 sandbox/out/test/classes/
 
+addressbook-web-tests/build/
 addressbook-web-tests/out/production/classes/
 addressbook-web-tests/out/classes/
 
