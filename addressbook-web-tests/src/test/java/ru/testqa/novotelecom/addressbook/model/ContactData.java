@@ -1,4 +1,4 @@
-package ru.testqa.novotelecom.addressbook;
+package ru.testqa.novotelecom.addressbook.model;
 
 public class ContactData {
   private final String firstname;
