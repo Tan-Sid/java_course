@@ -12,4 +12,12 @@ public class ContactDeletionTests extends TestBase {
         app.getContactHelper().returnToContactPage();
     }
 
+    @Test
+    public void testContactDeletionAlert(){
+        app.getNavigationHelper().goToContactPage();
+        app.getContactHelper().clickElementForDelete();
+        app.getContactHelper().clickButtonDelete();
+        app.getContactHelper().returnToContactPage();
+    }
+
 }
