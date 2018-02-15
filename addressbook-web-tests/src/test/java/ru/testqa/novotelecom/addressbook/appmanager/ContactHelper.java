@@ -1,12 +1,13 @@
 package ru.testqa.novotelecom.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper (FirefoxDriver wd) {
+  public ContactHelper (WebDriver wd) {
     super (wd);
   }
 
