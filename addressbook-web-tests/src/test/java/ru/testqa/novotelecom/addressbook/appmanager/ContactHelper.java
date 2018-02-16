@@ -1,8 +1,11 @@
 package ru.testqa.novotelecom.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -23,7 +26,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
@@ -31,6 +34,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
   public void type(By locator, String text) {
