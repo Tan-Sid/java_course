@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletion() {
     if (! app.getContactHelper().isThereAContact()) {
     app.getContactHelper().createContact(new ContactData("1Иван", "1Иванов", "ул.Мира 5", "333-33-33", "test1@mail.ru", "test2@mail.ru", "test3@mail.ru", "test1"));
@@ -24,7 +24,7 @@ public class ContactDeletionTests extends TestBase {
     Assert.assertEquals(before, after);
   }
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletionAlert() {
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("1Иван", "1Иванов", "ул.Мира 5", "333-33-33", "test1@mail.ru", "test2@mail.ru", "test3@mail.ru", "test1"));
