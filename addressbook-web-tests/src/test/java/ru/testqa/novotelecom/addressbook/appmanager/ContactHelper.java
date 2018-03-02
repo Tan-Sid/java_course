@@ -7,8 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -55,25 +56,21 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteSelectedContact() {
-    click(By.xpath("//div[@id='content']/form[2]/input[2]"));
-  }
-
-  public void selectContact(int index) {
-//    wd.findElements(By.cssSelector("tr[name='entry']")).get(index).findElement(By.xpath(".//td[1]/input")).click();
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+
   }
 
-  public void initContactModification(int index) {
-    wd.findElements(By.cssSelector("tr[name='entry']")).get(index).findElement(By.xpath(".//td[8]/a/img")).click();
-//    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+  public void initContactModification() {
+    wd.findElement(By.cssSelector("tr[name='entry']")).findElement(By.xpath(".//td[8]/a/img")).click();
   }
 
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
-  }
-
-  public void clickElementForDelete() {
-    click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
   }
 
   public void clickButtonDelete() {
@@ -88,21 +85,22 @@ public class ContactHelper extends HelperBase {
     goToContactPage();
   }
 
-  public void modify(int index, ContactData contact) {
-    initContactModification(index);
+  public void modify(ContactData contact) {
+    selectContactById(contact.getId());
+    initContactModification();
     fillContactForm(contact, false);
     submitContactModification();
     goToContactPage();
   }
 
-  public void deleteButton(int index) {
-    selectContact(index);
+  public void deleteButton(ContactData contact) {
+    selectContactById(contact.getId());
     deleteSelectedContact();
     goToContactPage();
   }
 
-  public void deleteAlert() {
-    clickElementForDelete();
+  public void deleteAlert(ContactData contact) {
+    selectContactById(contact.getId());
     clickButtonDelete();
     goToContactPage();
   }
@@ -115,8 +113,8 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
