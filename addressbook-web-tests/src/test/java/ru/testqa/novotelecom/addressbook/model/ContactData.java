@@ -7,11 +7,32 @@ public class ContactData {
   private String firstname;
   private String lastname;
   private String address;
-  private String telephone;
+  private String address2;
+  private String homephone;
+  private String mobilephone;
+  private String workphone;
   private String email1;
   private String email2;
   private String email3;
+  private String allPhones;
+  private String allAddress;
+  private String allEmails;
   private String group;
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public ContactData withAllAddress(String allAddress) {
+    this.allAddress = allAddress;
+    return this;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -33,8 +54,23 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withTelephone(String telephone) {
-    this.telephone = telephone;
+  public ContactData withAddress2(String address2) {
+    this.address2 = address2;
+    return this;
+  }
+
+  public ContactData withHomePhone(String homephone) {
+    this.homephone = homephone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilephone) {
+    this.mobilephone = mobilephone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workphone) {
+    this.workphone = workphone;
     return this;
   }
 
@@ -74,8 +110,32 @@ public class ContactData {
     return address;
   }
 
-  public String getTelephone() {
-    return telephone;
+  public String getAddress2() {
+    return address2;
+  }
+
+  public String getHomePhone() {
+    return homephone;
+  }
+
+  public String getMobilePhone() {
+    return mobilephone;
+  }
+
+  public String getWorkPhone() {
+    return workphone;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public String getAllAddress() {
+    return allAddress;
   }
 
   public String getEmail1() {
@@ -95,15 +155,6 @@ public class ContactData {
   }
 
   @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -118,4 +169,14 @@ public class ContactData {
 
     return Objects.hash(id, firstname, lastname);
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
 }
