@@ -17,7 +17,7 @@ import java.util.List;
 
 public class GroupDataGenerator {
 
-  @Parameter(names = "-c", description = "Croup count")
+  @Parameter(names = "-c", description = "Group count")
   public int count;
 
   @Parameter(names = "-f", description = "Target file")
