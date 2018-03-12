@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
 import ru.testqa.novotelecom.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
@@ -38,6 +39,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -50,6 +52,12 @@ public class ContactHelper extends HelperBase {
     click(locator);
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
+  }
+
+  public void attach(By locator, File file) {
+    if (file != null) {
+      wd.findElement(locator).sendKeys(file.getAbsolutePath());
+    }
   }
 
   public void createPage() {

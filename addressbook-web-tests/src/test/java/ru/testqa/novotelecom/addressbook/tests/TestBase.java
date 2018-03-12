@@ -7,7 +7,7 @@ import org.openqa.selenium.remote.BrowserType;
 
 public class TestBase {
 
-  protected static final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
   @BeforeSuite
   public void setUp() throws Exception {
