@@ -1,20 +1,4 @@
-lastname 0;firstname 0;address 0
-lastname 1;firstname 1;address 1
-lastname 2;firstname 2;address 2
-lastname 3;firstname 3;address 3
-lastname 4;firstname 4;address 4
-lastname 5;firstname 5;address 5
-lastname 6;firstname 6;address 6
-lastname 7;firstname 7;address 7
-lastname 8;firstname 8;address 8
-lastname 9;firstname 9;address 9
-lastname 10;firstname 10;address 10
-lastname 11;firstname 11;address 11
-lastname 12;firstname 12;address 12
-lastname 13;firstname 13;address 13
-lastname 14;firstname 14;address 14
-lastname 15;firstname 15;address 15
-lastname 16;firstname 16;address 16
-lastname 17;firstname 17;address 17
-lastname 18;firstname 18;address 18
-lastname 19;firstname 19;address 19
+firstname 0;lastname 0;address 0;home 0;mobile 0;work 0;email 0;email2 0;email 0;group 0
+firstname 1;lastname 1;address 1;home 1;mobile 1;work 1;email 1;email2 1;email 1;group 1
+firstname 2;lastname 2;address 2;home 2;mobile 2;work 2;email 2;email2 2;email 2;group 2
+

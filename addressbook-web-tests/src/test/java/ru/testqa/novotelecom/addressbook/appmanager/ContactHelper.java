@@ -100,7 +100,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-//    selectContactById(contact.getId());
     initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
@@ -139,7 +138,6 @@ public class ContactHelper extends HelperBase {
 
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-    //List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
       String lastname =  element.findElement(By.xpath(".//td[2]")).getText();

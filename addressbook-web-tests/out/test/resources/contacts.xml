@@ -1,0 +1,41 @@
+<list>
+  <contact>
+    <firstname>firstname 0</firstname>
+    <lastname>lastname 0</lastname>
+    <address>address 0</address>
+    <homephone>333-33-33 0</homephone>
+    <mobilephone>79(-99999-99-99) 0</mobilephone>
+    <workphone>44 44 0</workphone>
+    <email1>0@mail.ru</email1>
+    <email2>02@mail.ru</email2>
+    <email3>03@mail.ru</email3>
+    <group>test1</group>
+    <photo>src/test/resources/qa.png</photo>
+  </contact>
+  <contact>
+    <firstname>firstname 1</firstname>
+    <lastname>lastname 1</lastname>
+    <address>address 1</address>
+    <homephone>333-33-33 1</homephone>
+    <mobilephone>79(-99999-99-99) 1</mobilephone>
+    <workphone>44 44 1</workphone>
+    <email1>1@mail.ru</email1>
+    <email2>12@mail.ru</email2>
+    <email3>13@mail.ru</email3>
+    <group>test1</group>
+    <photo>src/test/resources/qa.png</photo>
+  </contact>
+  <contact>
+    <firstname>firstname 2</firstname>
+    <lastname>lastname 2</lastname>
+    <address>address 2</address>
+    <homephone>333-33-33 2</homephone>
+    <mobilephone>79(-99999-99-99) 2</mobilephone>
+    <workphone>44 44 2</workphone>
+    <email1>2@mail.ru</email1>
+    <email2>22@mail.ru</email2>
+    <email3>23@mail.ru</email3>
+    <group>test1</group>
+    <photo>src/test/resources/qa.png</photo>
+  </contact>
+</list>
