@@ -2,6 +2,7 @@
 
 .idea/workspace.xml
 .idea/misc.xml
+*.log
 
 sandbox/build/
 sandbox/out/production/classes/
