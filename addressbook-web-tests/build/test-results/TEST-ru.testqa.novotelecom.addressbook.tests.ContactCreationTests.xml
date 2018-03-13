@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.testqa.novotelecom.addressbook.tests.ContactCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-03-13T03:48:05" hostname="nt-07" time="17.428">
+  <properties/>
+  <testcase name="testContactCreation[0](ContactData{id='0', firstname='firstname 0', lastname='lastname 0'})" classname="ru.testqa.novotelecom.addressbook.tests.ContactCreationTests" time="7.685"/>
+  <testcase name="testContactCreation[1](ContactData{id='0', firstname='firstname 1', lastname='lastname 1'})" classname="ru.testqa.novotelecom.addressbook.tests.ContactCreationTests" time="4.823"/>
+  <testcase name="testContactCreation[2](ContactData{id='0', firstname='firstname 2', lastname='lastname 2'})" classname="ru.testqa.novotelecom.addressbook.tests.ContactCreationTests" time="4.919"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

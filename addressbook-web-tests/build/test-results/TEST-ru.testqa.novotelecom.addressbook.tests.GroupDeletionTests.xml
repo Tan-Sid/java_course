@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.testqa.novotelecom.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-13T03:43:41" hostname="nt-07" time="1.644">
+  <properties/>
+  <testcase name="testGroupDeletion" classname="ru.testqa.novotelecom.addressbook.tests.GroupDeletionTests" time="1.644"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
