@@ -8,8 +8,8 @@ sandbox/build/
 sandbox/out/production/classes/
 sandbox/out/test/classes/
 
-addressbook-web-tests/out/test/classes/
-addressbook-web-tests/out/main/classes/
+addressbook-web-tests/out/
+addressbook-web-tests/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting

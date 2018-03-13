@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.testqa.novotelecom.addressbook.tests.ContactEmailTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-13T03:42:31" hostname="nt-07" time="0.582">
-  <properties/>
-  <testcase name="testContactEmails" classname="ru.testqa.novotelecom.addressbook.tests.ContactEmailTests" time="0.582"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
