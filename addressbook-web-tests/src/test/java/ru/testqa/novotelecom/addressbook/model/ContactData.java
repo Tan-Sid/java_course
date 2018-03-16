@@ -16,7 +16,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "addressbook")
 public class ContactData {
-
   @XStreamOmitField
   @Id
   @Column(name = "id")
@@ -65,7 +64,6 @@ public class ContactData {
   @javax.persistence.Transient
   private String group;
 
-  @javax.persistence.Transient
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;

@@ -14,7 +14,7 @@ public class ContactEmailTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0){
       app.contact().create(new ContactData()
               .withFirstname("1Иван").withLastname("1Иванов").withAddress("ул.Мира 5")
               .withHomePhone("333-33-33").withMobilePhone("7-999(999-99-99)").withWorkPhone("4444")
@@ -30,6 +30,7 @@ public class ContactEmailTests extends TestBase {
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    verifyContactListInUI();
   }
 
   private String mergeEmails(ContactData contact) {

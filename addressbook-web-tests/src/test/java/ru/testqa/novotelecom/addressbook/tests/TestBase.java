@@ -8,9 +8,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.testqa.novotelecom.addressbook.appmanager.ApplicationManager;
 import org.openqa.selenium.remote.BrowserType;
+import ru.testqa.novotelecom.addressbook.model.ContactData;
+import ru.testqa.novotelecom.addressbook.model.Contacts;
+import ru.testqa.novotelecom.addressbook.model.GroupData;
+import ru.testqa.novotelecom.addressbook.model.Groups;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TestBase {
 
@@ -37,5 +45,27 @@ public class TestBase {
   @AfterMethod(alwaysRun = true)
   public void logTestStop(Method m) {
     logger.info("Stop test " + m.getName());
+  }
+
+  public void verifyGroupListInUI() {
+    if (Boolean.getBoolean("verifyUI")) {
+      Groups dbGroups = app.db().groups();
+      Groups uiGroups = app.group().all();
+      assertThat(uiGroups, equalTo(dbGroups.stream()
+              .map((g) -> new GroupData().withId(g.getId()).withName(g.getName()))
+              .collect(Collectors.toSet())));
+    }
+  }
+
+  public void verifyContactListInUI() {
+    if (Boolean.getBoolean("verifyUI")) {
+      Contacts dbContacts = app.db().contacts();
+      Contacts uiContacts = app.contact().all();
+      assertThat(uiContacts, equalTo(dbContacts.stream()
+              .map((g) -> new ContactData().withId(g.getId()).withFirstname(g.getFirstname()).withLastname(g.getLastname()).withAddress(g.getAddress())
+              .withHomePhone(g.getHomePhone()).withMobilePhone(g.getMobilePhone()).withWorkPhone(g.getWorkPhone())
+              .withEmail1(g.getEmail1()).withEmail2(g.getEmail2()).withEmail3(g.getEmail3()).withGroup(g.getGroup()))
+              .collect(Collectors.toSet())));
+    }
   }
 }

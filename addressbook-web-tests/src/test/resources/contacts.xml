@@ -25,17 +25,4 @@
     <group>test1</group>
     <photo>src/test/resources/qa.png</photo>
   </contact>
-  <contact>
-    <firstname>firstname 2</firstname>
-    <lastname>lastname 2</lastname>
-    <address>address 2</address>
-    <homephone>333-33-33 2</homephone>
-    <mobilephone>79(-99999-99-99) 2</mobilephone>
-    <workphone>44 44 2</workphone>
-    <email1>2@mail.ru</email1>
-    <email2>22@mail.ru</email2>
-    <email3>23@mail.ru</email3>
-    <group>test1</group>
-    <photo>src/test/resources/qa.png</photo>
-  </contact>
 </list>
