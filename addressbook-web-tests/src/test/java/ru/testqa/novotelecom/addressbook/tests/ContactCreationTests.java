@@ -36,18 +36,18 @@ public class ContactCreationTests extends TestBase{
 
   @Test (dataProvider = "validContactsFromXml")
   public void testContactCreation(ContactData contact) {
-      Contacts before = app.contact().all();
+      Contacts before = app.db().contacts();
       app.contact().createPage();
       app.contact().create(contact);
       assertThat(app.contact().count(), equalTo(before.size() + 1));
-      Contacts after = app.contact().all();
+      Contacts after = app.db().contacts();
       assertThat(after, equalTo(
               before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 
   @Test (enabled = false)
   public void testBadContactCreation() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     app.contact().createPage();
     ContactData contact = new ContactData()
             .withFirstname("1Иван'").withLastname("1Иванов").withAddress("ул.Мира 5")
@@ -56,7 +56,7 @@ public class ContactCreationTests extends TestBase{
             .withGroup("test1");
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before));
   }
 
