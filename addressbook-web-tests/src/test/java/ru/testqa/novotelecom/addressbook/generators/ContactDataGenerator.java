@@ -5,6 +5,9 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
+import ru.testqa.novotelecom.addressbook.model.GroupData;
+import ru.testqa.novotelecom.addressbook.model.Groups;
+import ru.testqa.novotelecom.addressbook.tests.TestBase;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,7 +16,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactDataGenerator {
+public class ContactDataGenerator extends TestBase {
 
   @Parameter (names = "-c", description = "Contact count")
   public int count;
@@ -62,19 +65,20 @@ public class ContactDataGenerator {
       for (ContactData contact : contacts) {
         writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname(), contact.getAddress(),
                 contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
-                contact.getEmail1(), contact.getEmail2(), contact.getEmail3(), contact.getGroup(), contact.getPhoto()));
+                contact.getEmail1(), contact.getEmail2(), contact.getEmail3(), contact.getPhoto()));
       }
     }
   }
 
   private List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
+    GroupData group = new GroupData().withName("test1").withId(1);
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstname(String.format("firstname %s", i))
       .withLastname(String.format("lastname %s", i)).withAddress(String.format("address %s", i))
-              .withHomePhone(String.format("333-33-33 %s", i)).withMobilePhone(String.format("79(-99999-99-99) %s", i)).withWorkPhone(String.format("44 44 %s", i))
+              .withHomePhone(String.format("333-33-33 %s", i)).withMobilePhone(String.format("79(999-999-999) %s", i)).withWorkPhone(String.format("44 44 %s", i))
               .withEmail1(String.format("%s@mail.ru", i)).withEmail2(String.format("%s2@mail.ru", i)).withEmail3(String.format("%s3@mail.ru", i))
-              .withGroup(String.format("test1", i)).withPhoto(new File("src/test/resources/qa.png")));
+              .withPhoto(new File("src/test/resources/qa.png")).inGroup(group));
     }
     return contacts;
   }

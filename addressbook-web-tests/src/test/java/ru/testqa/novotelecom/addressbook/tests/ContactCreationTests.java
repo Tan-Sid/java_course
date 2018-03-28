@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
 import ru.testqa.novotelecom.addressbook.model.Contacts;
+import ru.testqa.novotelecom.addressbook.model.Groups;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactCreationTests extends TestBase{
+public class ContactCreationTests extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validContactsFromXml() throws IOException {
@@ -34,31 +35,17 @@ public class ContactCreationTests extends TestBase{
     }
   }
 
-  @Test (dataProvider = "validContactsFromXml")
-  public void testContactCreation(ContactData contact) {
-      Contacts before = app.db().contacts();
-      app.contact().createPage();
-      app.contact().create(contact);
-      assertThat(app.contact().count(), equalTo(before.size() + 1));
-      Contacts after = app.db().contacts();
-      assertThat(after, equalTo(
-              before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
-    verifyContactListInUI();
-    }
-
-  @Test (enabled = false)
-  public void testBadContactCreation() {
+  @Test(dataProvider = "validContactsFromXml")
+  public void testContactCreationFromXml(ContactData contact) {
     Contacts before = app.db().contacts();
     app.contact().createPage();
-    ContactData contact = new ContactData()
-            .withFirstname("1Иван'").withLastname("1Иванов").withAddress("ул.Мира 5")
-            .withHomePhone("333-33-33").withMobilePhone("7-999(999-99-99)").withWorkPhone("4444")
-            .withEmail1("test1@mail.ru").withEmail2("test2@mail.ru").withEmail3("test3@mail.ru")
-            .withGroup("test1");
     app.contact().create(contact);
-    assertThat(app.contact().count(), equalTo(before.size()));
+
     Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before));
+    assertThat(app.contact().count(), equalTo(before.size() + 1));
+
+    assertThat(after, equalTo(
+            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     verifyContactListInUI();
   }
 }

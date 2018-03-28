@@ -9,8 +9,13 @@
     <email1>0@mail.ru</email1>
     <email2>02@mail.ru</email2>
     <email3>03@mail.ru</email3>
-    <group>test1</group>
     <photo>src/test/resources/qa.png</photo>
+    <groups>
+      <group>
+        <name>test1</name>
+        <contacts/>
+      </group>
+    </groups>
   </contact>
   <contact>
     <firstname>firstname 1</firstname>
@@ -22,7 +27,24 @@
     <email1>1@mail.ru</email1>
     <email2>12@mail.ru</email2>
     <email3>13@mail.ru</email3>
-    <group>test1</group>
     <photo>src/test/resources/qa.png</photo>
+    <groups>
+      <group reference="../../../contact/groups/group"/>
+    </groups>
+  </contact>
+  <contact>
+    <firstname>firstname 2</firstname>
+    <lastname>lastname 2</lastname>
+    <address>address 2</address>
+    <homephone>333-33-33 2</homephone>
+    <mobilephone>79(-99999-99-99) 2</mobilephone>
+    <workphone>44 44 2</workphone>
+    <email1>2@mail.ru</email1>
+    <email2>22@mail.ru</email2>
+    <email3>23@mail.ru</email3>
+    <photo>src/test/resources/qa.png</photo>
+    <groups>
+      <group reference="../../../contact/groups/group"/>
+    </groups>
   </contact>
 </list>

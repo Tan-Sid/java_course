@@ -41,8 +41,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("email3"), contactData.getEmail3());
     //attach(By.name("photo"), contactData.getPhoto());
 
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    if (creation)
+    {
+//      if (contactData.getGroups().size() > 0) {
+//        Assert.assertTrue(contactData.getGroups().size() == 1);
+//        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+//      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -71,7 +75,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContactById(int id) {
-    wd.findElement(By.id(""+id+"")).click();
+    wd.findElement(By.id("" + id + "")).click();
   }
 
   public void initContactModificationById(int id) {
@@ -140,7 +144,7 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
-      String lastname =  element.findElement(By.xpath(".//td[2]")).getText();
+      String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
       String address = element.findElement(By.xpath(".//td[4]")).getText();
       String allEmails = element.findElement(By.xpath(".//td[5]")).getText();

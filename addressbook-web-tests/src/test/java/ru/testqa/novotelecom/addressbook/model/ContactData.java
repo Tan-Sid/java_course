@@ -4,13 +4,11 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.beans.Transient;
+import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -61,12 +59,14 @@ public class ContactData {
   @javax.persistence.Transient
   private String allEmails;
 
-  @javax.persistence.Transient
-  private String group;
-
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public File getPhoto() {
     return new File(photo);
@@ -137,11 +137,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
   public int getId() {
     return id;
   }
@@ -190,16 +185,23 @@ public class ContactData {
     return email3;
   }
 
-  public String getGroup() {
-    return group;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
-            "id='" + id + '\'' +
+            "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", homephone='" + homephone + '\'' +
+            ", mobilephone='" + mobilephone + '\'' +
+            ", workphone='" + workphone + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
             '}';
   }
 
@@ -217,15 +219,17 @@ public class ContactData {
             Objects.equals(workphone, that.workphone) &&
             Objects.equals(email1, that.email1) &&
             Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3) &&
-            Objects.equals(allPhones, that.allPhones) &&
-            Objects.equals(allEmails, that.allEmails) &&
-            Objects.equals(group, that.group);
+            Objects.equals(email3, that.email3);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(id, firstname, lastname, address, homephone, mobilephone, workphone, email1, email2, email3, allPhones, allEmails, group);
+    return Objects.hash(id, firstname, lastname, address, homephone, mobilephone, workphone, email1, email2, email3);
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
   }
 }
