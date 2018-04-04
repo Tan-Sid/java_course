@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.testqa.novotelecom.addressbook.model.ContactData;
 import ru.testqa.novotelecom.addressbook.model.Contacts;
+import ru.testqa.novotelecom.addressbook.model.GroupData;
 
 import java.io.File;
 import java.util.List;
@@ -78,6 +79,10 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.id("" + id + "")).click();
   }
 
+  public void selectContactByIdForDelete(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+  }
+
   public void initContactModificationById(int id) {
 //    wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
 //    wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
@@ -88,6 +93,18 @@ public class ContactHelper extends HelperBase {
 
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+  }
+
+  public void submitContactAddInGroup() {
+    click(By.cssSelector("input[name='add']"));
+  }
+
+  public void submitContactDeleteFromGroup() {
+    click(By.cssSelector("input[name='remove']"));
+  }
+
+  public void goToContactsFromGroupsPage(int group) {
+    wd.findElement(By.cssSelector(String.format("a[href='./index.php?group=%s']", group))).click();
   }
 
   public void clickButtonDelete() {
@@ -107,6 +124,22 @@ public class ContactHelper extends HelperBase {
     initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
+    contactCache = null;
+    goToContactPage();
+  }
+
+  public void addInGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    submitContactAddInGroup();
+    contactCache = null;
+    goToContactPage();
+  }
+
+  public void deleteFromGroup(ContactData contact, GroupData group) {
+    selectContactByIdForDelete(contact.getId());
+    goToContactsFromGroupsPage(group.getId());
+    selectContactById(contact.getId());
+    submitContactDeleteFromGroup();
     contactCache = null;
     goToContactPage();
   }

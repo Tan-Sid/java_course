@@ -4,7 +4,6 @@ import biz.futureware.mantis.rpc.soap.client.*;
 import ru.testqa.novotelecom.mantis.model.Issue;
 import ru.testqa.novotelecom.mantis.model.Project;
 
-import javax.mail.search.SearchTerm;
 import javax.xml.rpc.ServiceException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
@@ -32,7 +31,7 @@ public class SoapHelper {
 
   private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator()
-              .getMantisConnectPort(new URL("http://localhost/mantisbt-1.2.19/api/soap/mantisconnect.php"));
+              .getMantisConnectPort(new URL(app.getProperty("soap.url")));
   }
 
   public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
