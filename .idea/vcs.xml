@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/addressbook-web-tests" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/github-sample" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/mantis-tests" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/rest-sample" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/soap-sample" vcs="svn" />
