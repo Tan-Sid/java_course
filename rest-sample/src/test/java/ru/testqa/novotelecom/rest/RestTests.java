@@ -14,10 +14,11 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestTests {
+public class RestTests extends TestBase {
 
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed(1281);
     Set<Issue> oldIssues = getIssues();
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
     int issueId = createIssue(newIssue);
@@ -32,10 +33,6 @@ public class RestTests {
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
     return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
-  }
-
-  private Executor getExecutor() {
-    return Executor.newInstance().auth("28accbe43ea112d9feb328d2c00b3eed", "");
   }
 
   private int createIssue(Issue newIssue) throws IOException {
