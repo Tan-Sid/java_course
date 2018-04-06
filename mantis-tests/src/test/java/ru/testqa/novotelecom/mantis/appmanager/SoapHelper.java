@@ -3,6 +3,7 @@ package ru.testqa.novotelecom.mantis.appmanager;
 import biz.futureware.mantis.rpc.soap.client.*;
 import ru.testqa.novotelecom.mantis.model.Issue;
 import ru.testqa.novotelecom.mantis.model.Project;
+import ru.testqa.novotelecom.mantis.tests.TestBase;
 
 import javax.xml.rpc.ServiceException;
 import java.math.BigInteger;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SoapHelper {
+public class SoapHelper extends TestBase {
 
   private ApplicationManager app;
 
@@ -27,11 +28,6 @@ public class SoapHelper {
     return Arrays.asList(projects).stream()
             .map((p) -> new Project().withId(p.getId().intValue()).withName(p.getName()))
             .collect(Collectors.toSet());
-  }
-
-  private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
-    return new MantisConnectLocator()
-              .getMantisConnectPort(new URL(app.getProperty("soap.url")));
   }
 
   public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {

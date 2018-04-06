@@ -24,7 +24,7 @@ public class SoapTests extends TestBase{
 
   @Test
   public void testCreateIssue() throws RemoteException, ServiceException, MalformedURLException {
-    skipIfNotFixed(1);
+    skipIfNotFixed(3);
     Set<Project> projects = app.soap().getProjects();
     Issue issue = new Issue().withSummary("Test issue")
             .withDescription("Test issue description").withProject(projects.iterator().next());
