@@ -24,8 +24,10 @@ public class ChangePassword extends TestBase {
     String user = "administrator";
     String password = "root";
     String email = String.format("user1@localhost.localdomain");
+
     app.changePassword().login(user, password);
     app.changePassword().changePassword();
+
     List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
     String confirmationLink = findChangePassLink(mailMessages, email);
     app.changePassword().finish(confirmationLink, "newpass");
