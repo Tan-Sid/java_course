@@ -35,8 +35,8 @@ public class ApplicationManager {
   }
 
   public void init() throws IOException {
-    String target = System.getProperty("target", "local");
-    System.out.println(target);
+    String target = System.getProperty("target", "remote");
+    System.out.println("target: " + target);
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     dbHelper = new DbHelper();
