@@ -35,8 +35,9 @@ public class ApplicationManager {
   }
 
   public void init() throws IOException {
-    String targer = System.getProperty("target", "local");
-    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", targer))));
+    String target = System.getProperty("target", "local");
+    System.out.println(target);
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     dbHelper = new DbHelper();
 
@@ -51,7 +52,7 @@ public class ApplicationManager {
     } else {
       DesiredCapabilities capabilities = new DesiredCapabilities();
       capabilities.setBrowserName(browser);
-      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")),capabilities);
+      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
